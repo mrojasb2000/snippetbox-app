@@ -18,9 +18,8 @@ func CreateSnippet(w http.ResponseWriter, r *http.Request) {
 		// header map. The first parameter is the header name, and the second parameter
 		// is the header value.
 		w.Header().Set("Allow", http.MethodPost)
-
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		w.Write([]byte("Method Not Allowed"))
+		// Use the http.Error() function to send a 405 status code and "Method Not Allowed"
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
 	}
 	w.Write([]byte("Create a new snippet..."))

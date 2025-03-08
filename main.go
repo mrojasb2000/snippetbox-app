@@ -10,8 +10,12 @@ import (
 func main() {
 	// Use the http.NewServeMux() function to initialize a new servemux, then
 	// register the home function as the handler for the "/" URL pattern.
+	// Register the two new handler functions and corresponding URL patterns
+	// with the servemux, in exactly the same way we did before.
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", controllers.Home)
+	mux.HandleFunc("/snippet", controllers.ShowSnippet)
+	mux.HandleFunc("/snippet/create", controllers.CreateSnippet)
 
 	// Use the http.ListenAndServe() function to start a new web server. We pass
 	// in two parameters: the TCP network address to listen on (in this case ":4000")
